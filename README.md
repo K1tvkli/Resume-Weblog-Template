@@ -34,6 +34,32 @@
 - Glass Morphism Effect
 - Gradient Animations
 
+### دیپلوی روی Vercel
+
+برای دیپلوی پروژه روی Vercel:
+
+1. **از طریق Git:**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push
+   ```
+   سپس به [vercel.com](https://vercel.com) بروید و پروژه را از ریپازیتوری GitHub خود import کنید.
+
+2. **از طریق CLI:**
+   ```bash
+   vercel login
+   vercel --prod
+   ```
+
+3. **یا به سادگی:**
+   - کد پروژه را روی GitHub push کنید
+   - به Vercel بروید و "New Project" را بزنید
+   - ریپازیتوری را انتخاب کنید
+   - "Deploy" را بزنید!
+
+پروژه به صورت خودکار دیپلوی می‌شود و یک URL دریافت خواهید کرد.
+
 ---
 
 © 2025 دکتر یوسف ندایی | تمامی حقوق محفوظ است
