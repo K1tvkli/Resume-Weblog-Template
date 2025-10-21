@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دکتر یوسف ندایی - مدرس و مولف زیست شناسی کنکور، رتبه ۱۱۵ کنکور سراسری">
+    <meta name="keywords" content="زیست شناسی، کنکور، آموزش، دکتر ندایی، یوسف ندایی">
+    <meta name="author" content="Dr. Yousef Nedaei">
+    <title>دکتر یوسف ندایی | مدرس زیست شناسی</title>
+    <style>
+        /* Critical CSS for preventing FOUC */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        
+        #app {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .background-image,
+        .gradient-overlay {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Layers -->
+    <div class="background-image" role="presentation" aria-hidden="true"></div>
+    <div class="gradient-overlay" role="presentation" aria-hidden="true"></div>
+    
+    <!-- Main Container -->
+    <main class="container" id="app">
+        <!-- Header Section -->
+        <header class="header-section">
+            <article class="profile-card glass-effect" data-animate="fade-in">
+                <h1 class="name-title">دکتر یوسف ندایی</h1>
+                <p class="subtitle">مدرس و مولف زیست شناسی کنکور</p>
+            </article>
+        </header>
+
+        <!-- Badges Grid Section -->
+        <section class="badges-section" aria-label="دستاورد‌ها و فعالیت‌ها">
+            
+            <!-- Education & Achievements Box -->
+            <div class="badge-category-box" data-category="education">
+                <h2 class="category-title">
+                    <span class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </span>
+                    تحصیلات و دستاورد‌ها
+                </h2>
+                <div class="category-badges">
+                    
+                    <!-- Education Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="education">
+                        <div class="badge-logo">
+                            <img src="../images/Shahid Beheshti.jpg" alt="دانشگاه علوم پزشکی شهید بهشتی" loading="lazy">
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">دانشجوی پزشکی</h3>
+                            <p class="badge-subtitle">دانشگاه علوم پزشکی شهید بهشتی</p>
+                        </div>
+                    </article>
+
+                    <!-- Rank Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="achievement">
+                        <div class="badge-logo rank-logo">
+                            <span class="rank-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                                    <path d="M4 22h16"/>
+                                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">رتبه ۱۱۵</h3>
+                            <p class="badge-subtitle">کنکور سراسری ۱۴۰۱</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- Teaching Box -->
+            <div class="badge-category-box" data-category="teaching">
+                <h2 class="category-title">
+                    <span class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            <path d="M9 6h6M9 10h6M9 14h3"/>
+                        </svg>
+                    </span>
+                    تدریس
+                </h2>
+                <div class="category-badges">
+                    
+                    <!-- Teaching Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="teaching">
+                        <div class="badge-logo teaching-logo">
+                            <span class="teaching-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    <path d="M9 6h6M9 10h6M9 14h3"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">تدریس زیست‌شناسی</h3>
+                            <p class="badge-subtitle">کنکور و نهایی - حضوری و آنلاین</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- Authorship Box -->
+            <div class="badge-category-box" data-category="authorship">
+                <h2 class="category-title">
+                    <span class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                        </svg>
+                    </span>
+                    تألیف کتاب‌ها
+                </h2>
+                <div class="category-badges">
+
+                    <!-- Kheilisabz Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="authorship">
+                        <div class="badge-logo">
+                            <img src="../images/Kheilisabz.png" alt="انتشارات خیلی سبز" loading="lazy">
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">عضو هیئت تألیف</h3>
+                            <p class="badge-subtitle">زیست‌شناسی خیلی سبز</p>
+                        </div>
+                    </article>
+
+                    <!-- Kagu Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="authorship">
+                        <div class="badge-logo">
+                            <img src="../images/کاگو.png" alt="انتشارات کاگو" loading="lazy">
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">عضو هیئت تألیف</h3>
+                            <p class="badge-subtitle">زیست‌شناسی کاگو</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- Exam Design Box -->
+            <div class="badge-category-box" data-category="exam">
+                <h2 class="category-title">
+                    <span class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                            <line x1="9" y1="12" x2="15" y2="12"/>
+                        </svg>
+                    </span>
+                    طراحی سوالات آزمون
+                </h2>
+                <div class="category-badges">
+
+                    <!-- Ghalamchi Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="exam">
+                        <div class="badge-logo">
+                            <img src="../images/Ghalamchi.webp" alt="آزمون قلمچی" loading="lazy">
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">طراح سوالات</h3>
+                            <p class="badge-subtitle">آزمون قلمچی</p>
+                        </div>
+                    </article>
+
+                    <!-- Maz Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="exam">
+                        <div class="badge-logo">
+                            <img src="../images/ماز.jpg" alt="آزمون ماز" loading="lazy">
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">طراح سوالات</h3>
+                            <p class="badge-subtitle">آزمون ماز</p>
+                        </div>
+                    </article>
+
+                    <!-- Testino Badge -->
+                    <article class="achievement-badge glass-effect" data-animate="scale-in" data-category="exam">
+                        <div class="badge-logo testino-logo">
+                            <span class="testino-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M16.2 7.8l-2 6.3-6.4 2.1 2-6.3z"/>
+                                    <circle cx="12" cy="12" r="2"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="badge-content">
+                            <h3 class="badge-title">طراح سوالات</h3>
+                            <p class="badge-subtitle">تستینو و سایر آزمون‌ها</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" aria-label="تماس با من">
+            <div class="contact-container glass-effect" data-animate="fade-in">
+                <h2 class="contact-title">برای دریافت اطلاعات بیشتر با من در تماس باشید</h2>
+                <nav class="social-links" aria-label="لینک‌های شبکه‌های اجتماعی">
+                    <a href="#" class="social-btn telegram" data-social="telegram" aria-label="تلگرام">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                            </svg>
+                        </span>
+                        <span class="btn-text">تلگرام</span>
+                    </a>
+                    <a href="#" class="social-btn instagram" data-social="instagram" aria-label="اینستاگرام">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </span>
+                        <span class="btn-text">اینستاگرام</span>
+                    </a>
+                    <a href="#" class="social-btn whatsapp" data-social="whatsapp" aria-label="واتساپ">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </span>
+                        <span class="btn-text">واتساپ</span>
+                    </a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© <span id="year">۲۰۲۵</span> دکتر یوسف ندایی | تمامی حقوق محفوظ است</p>
+            <p class="tech-badge">Built with 
+                <span class="heart">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </span> 
+                TypeScript
+            </p>
+        </footer>
+    </main>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader"></div>
+    </div>
+</body>
+</html>
