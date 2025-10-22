@@ -106,12 +106,12 @@ body {
     width: 100%;
     height: 100%;
     background-color: #0a0a0a;
-    background-image: url('/1761039807638.jpg');
+    background-image: url('../../public/images/BackgroundEraser_20251021_210103694.png');
     background-size: cover;
     background-position: center 35%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    filter: brightness(0.7) contrast(1.15);
+    filter: brightness(0.9) contrast(1.05);
     z-index: -2;
     /* عکس واضح - پایین‌تر قرار دارد */
 }
@@ -123,11 +123,11 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg,
-            rgba(10, 10, 30, 0.85) 0%,
-            rgba(30, 10, 50, 0.75) 25%,
-            rgba(10, 30, 60, 0.75) 50%,
-            rgba(50, 10, 40, 0.75) 75%,
-            rgba(10, 10, 30, 0.85) 100%);
+            rgba(10, 10, 30, 0.4) 0%,
+            rgba(30, 10, 50, 0.35) 25%,
+            rgba(10, 30, 60, 0.35) 50%,
+            rgba(50, 10, 40, 0.35) 75%,
+            rgba(10, 10, 30, 0.4) 100%);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     z-index: -1;
@@ -223,16 +223,36 @@ body {
 }
 
 .name-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 800;
     margin-bottom: var(--spacing-sm);
-    background: var(--primary-gradient);
+    background: linear-gradient(135deg,
+            #667eea 0%,
+            #764ba2 25%,
+            #a855f7 50%,
+            #c026d3 75%,
+            #9333ea 100%);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
     position: relative;
     z-index: 1;
+    animation: gradient-flow 6s ease infinite;
+    filter: drop-shadow(0 4px 20px rgba(139, 92, 246, 0.4));
+}
+
+@keyframes gradient-flow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .subtitle {
@@ -241,6 +261,43 @@ body {
     color: var(--text-secondary);
     margin-bottom: 10px;
     opacity: 0.95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.subtitle-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.5));
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+.subtitle-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #667eea;
+    stroke-width: 2;
+}
+
+/* Badge های هدر */
+.header-badges {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.header-badges .achievement-badge {
+    flex: 0 1 auto;
+    min-width: 280px;
+    max-width: 350px;
 }
 
 .rank-badge {
@@ -271,7 +328,6 @@ body {
 
 .rank-icon {
     font-size: 2rem;
-    animation: bounce 2s ease infinite;
 }
 
 @keyframes bounce {
@@ -321,6 +377,7 @@ body {
     position: relative;
     overflow: hidden;
     transition: all var(--transition-normal) var(--ease-out-cubic);
+    text-align: center;
 }
 
 .badge-category-box::before {
@@ -368,6 +425,7 @@ body {
 .category-title {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     font-weight: 700;
@@ -413,6 +471,13 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--spacing-md);
+    justify-items: center;
+    justify-content: center;
+}
+
+/* اگر ایتم تنها مونده باشه، وسط بیاد */
+.category-badges>.achievement-badge:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 /* ========================================
@@ -421,7 +486,9 @@ body {
 
 .achievement-badge {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 20px;
     padding: 25px;
     position: relative;
@@ -429,6 +496,8 @@ body {
     transition: all var(--transition-normal) var(--ease-out-cubic);
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    max-width: 300px;
 }
 
 .achievement-badge::before {
@@ -572,7 +641,6 @@ body {
     height: 100%;
     stroke: #ffd700;
     filter: drop-shadow(0 4px 10px rgba(255, 215, 0, 0.6));
-    animation: floatGold 3s ease-in-out infinite;
 }
 
 .teaching-logo .teaching-icon svg {
@@ -602,6 +670,41 @@ body {
 }
 
 /* ========================================
+   تنظیمات زوم برای لوگوهای خاص
+   ======================================== */
+
+/* زوم اوت بیشتر برای قلمچی و جلوگیری از کات شدن */
+.badge-logo img[src*="ghalamchi"] {
+    transform: scale(0.65);
+    object-fit: contain !important;
+}
+
+.achievement-badge:hover .badge-logo img[src*="ghalamchi"] {
+    transform: scale(0.75);
+}
+
+/* زوم اوت برای شهید بهشتی و افزایش روشنایی */
+.badge-logo img[src*="shahid-beheshti"] {
+    transform: scale(0.7);
+    object-fit: contain !important;
+    filter: brightness(1.5) contrast(1.2) !important;
+}
+
+.achievement-badge:hover .badge-logo img[src*="shahid-beheshti"] {
+    transform: scale(0.8);
+    filter: brightness(1.6) contrast(1.25) !important;
+}
+
+/* زوم این برای ماز */
+.badge-logo img[src*="maz"] {
+    transform: scale(1.3);
+}
+
+.achievement-badge:hover .badge-logo img[src*="maz"] {
+    transform: scale(1.45);
+}
+
+/* ========================================
    محتوای Badge
    ======================================== */
 
@@ -610,11 +713,14 @@ body {
     z-index: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 5px;
+    width: 100%;
 }
 
 .badge-title {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.4;
@@ -622,8 +728,10 @@ body {
 }
 
 .badge-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    font-weight: 400;
     color: var(--text-muted);
+    opacity: 0.8;
     line-height: 1.5;
     transition: color var(--transition-fast) ease;
 }
@@ -634,6 +742,7 @@ body {
 
 .achievement-badge:hover .badge-subtitle {
     color: var(--text-secondary);
+    opacity: 0.9;
 }
 
 /* ========================================
@@ -850,6 +959,145 @@ body {
     line-height: 1.8;
 }
 
+/* Contact Form Styles */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: right;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-align: right;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-normal) var(--ease-out-cubic);
+    backdrop-filter: blur(10px);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.8);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 50px;
+    background: var(--primary-gradient);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-normal) var(--ease-out-cubic);
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.submit-btn .btn-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-normal) var(--ease-bounce);
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(-5px);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.divider span {
+    padding: 0 20px;
+    font-weight: 500;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -957,6 +1205,39 @@ body {
 .tech-badge {
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+.designer-name {
+    background: linear-gradient(135deg,
+            #00f5a0 0%,
+            #00d9f5 20%,
+            #00e5ff 40%,
+            #1de9b6 60%,
+            #64ffda 80%,
+            #00f5a0 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: vibrant-gradient 5s ease-in-out infinite;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    display: inline-block;
+}
+
+@keyframes vibrant-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .heart {

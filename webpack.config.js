@@ -64,6 +64,11 @@ module.exports = (_env, argv) => {
                         noErrorOnMissing: true
                     },
                     {
+                        from: 'public/images',
+                        to: 'images',
+                        noErrorOnMissing: true
+                    },
+                    {
                         from: 'src/images',
                         to: 'images',
                         noErrorOnMissing: true

@@ -208,6 +208,15 @@ class App {
      * راه‌اندازی رویدادهای کلیک
      */
     private setupEventListeners(): void {
+        // فرم تماس
+        const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleFormSubmit(contactForm);
+            });
+        }
+
         // دکمه‌های شبکه‌های اجتماعی
         const socialButtons = document.querySelectorAll<HTMLAnchorElement>(
             '.social-btn'
@@ -234,6 +243,32 @@ class App {
                 setTimeout(() => tag.classList.remove('tag-clicked'), 600);
             });
         });
+    }
+
+    /**
+     * مدیریت ارسال فرم تماس
+     */
+    private handleFormSubmit(form: HTMLFormElement): void {
+        const formData = new FormData(form);
+        const name = formData.get('name') as string;
+        const email = formData.get('email') as string;
+        const subject = formData.get('subject') as string;
+        const message = formData.get('message') as string;
+
+        console.log('📧 Form submitted:', { name, email, subject, message });
+
+        // نمایش پیام موفقیت
+        this.showNotification('✅ پیام شما با موفقیت ارسال شد!');
+
+        // ریست کردن فرم
+        form.reset();
+
+        // اینجا می‌توانید درخواست API برای ارسال ایمیل اضافه کنید
+        // fetch('/api/contact', {
+        //     method: 'POST',
+        //     body: JSON.stringify({ name, email, subject, message }),
+        //     headers: { 'Content-Type': 'application/json' }
+        // });
     }
 
     /**
