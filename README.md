@@ -205,24 +205,47 @@ const links: Record<string, string> = {
 
 ## 🌐 دیپلوی
 
+### راه‌حل مشکلات Deploy
+
+اگر با خطای **404: NOT_FOUND** مواجه شدید، راهنمای [`VERCEL_DEPLOY.md`](./VERCEL_DEPLOY.md) را مطالعه کنید.
+
 ### Vercel (پیشنهادی)
 
+#### روش 1: از طریق CLI (سریع)
+
 ```bash
-# نصب Vercel CLI
-npm i -g vercel
-
-# لاگین
-vercel login
-
-# دیپلوی
+# دیپلوی مستقیم (Build + Deploy)
 npm run deploy
 ```
 
-یا به سادگی:
-1. پوش کردن کد به GitHub
+#### روش 2: از طریق GitHub (اتوماتیک)
+
+1. کد را به GitHub پوش کنید:
+   ```bash
+   git add .
+   git commit -m "Deploy to Vercel"
+   git push origin main
+   ```
+
 2. رفتن به [vercel.com](https://vercel.com)
 3. Import کردن repository
-4. کلیک روی Deploy! ✨
+4. تنظیمات (اتوماتیک از `vercel.json` خوانده می‌شود):
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+5. کلیک روی Deploy! ✨
+
+#### ⚙️ Environment Variables
+
+در داشبورد Vercel، Settings > Environment Variables:
+
+```
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_ANON_KEY=your-anon-key-here
+```
+
+**نکته:** برای Production, Preview و Development تنظیم کنید.
+
+📚 **راهنمای کامل Deploy:** [`VERCEL_DEPLOY.md`](./VERCEL_DEPLOY.md)
 
 ### Netlify
 
