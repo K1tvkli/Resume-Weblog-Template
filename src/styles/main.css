@@ -244,18 +244,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 0px;
 }
 
 .name-prefix {
-    font-size: 0.45em;
-    font-weight: 600;
+    font-size: 0.7em;
+    font-weight: 800;
     display: block;
 }
 
 .name-main {
-    font-size: 1em;
-    font-weight: 800;
+    font-size: 1.8em;
+    font-weight: 1000;
     display: block;
 }
 
