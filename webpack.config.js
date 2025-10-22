@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (_env, argv) => {
     const isProduction = argv.mode === 'production';
@@ -43,6 +44,13 @@ module.exports = (_env, argv) => {
             ],
         },
         plugins: [
+            new Dotenv({
+                path: './.env',
+                safe: false, // بررسی نکند که همه متغیرها در .env.example هم موجود باشند
+                systemvars: true, // متغیرهای محیطی سیستم را هم بخواند
+                silent: false, // خطاها را نشان دهد
+                defaults: false,
+            }),
             new HtmlWebpackPlugin({
                 template: './src/index.html',
                 minify: isProduction ? {

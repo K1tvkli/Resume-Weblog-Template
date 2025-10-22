@@ -4,6 +4,7 @@
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
@@ -28,6 +29,7 @@
 - **Webpack 5** - بهینه‌سازی و bundling پیشرفته
 - **CSS3 مدرن** - Grid, Flexbox, Custom Properties
 - **کلاس‌های OOP** - معماری تمیز و ماژولار
+- **Supabase** - دیتابیس PostgreSQL با Realtime و Authentication
 
 ### 🎭 انیمیشن‌ها
 - **Intersection Observer API** - انیمیشن‌های بهینه هنگام اسکرول
@@ -92,13 +94,19 @@ npm run type-check
 ```
 Resume-Weblog-Template/
 ├── src/
-│   ├── index.html          # فایل HTML اصلی
-│   ├── main.ts             # نقطه ورود اصلی
-│   ├── app.ts              # کلاس اصلی برنامه
-│   ├── animations.ts       # مدیریت انیمیشن‌ها
-│   ├── utils.ts            # توابع کمکی
+│   ├── index.html              # فایل HTML اصلی
+│   ├── main.ts                 # نقطه ورود اصلی
+│   ├── app.ts                  # کلاس اصلی برنامه
+│   ├── animations.ts           # مدیریت انیمیشن‌ها
+│   ├── utils.ts                # توابع کمکی
+│   ├── supabase.ts             # پیکربندی Supabase
+│   ├── database.service.ts     # سرویس دیتابیس
+│   ├── supabase.examples.ts    # مثال‌های استفاده از Supabase
 │   └── styles/
-│       └── main.css        # استایل‌های اصلی
+│       └── main.css            # استایل‌های اصلی
+├── .env                        # متغیرهای محیطی (کلیدهای Supabase)
+├── .env.example                # نمونه فایل محیطی
+├── SUPABASE_SETUP.md           # راهنمای راه‌اندازی Supabase
 ├── dist/                   # فایل‌های build شده
 ├── webpack.config.js       # تنظیمات Webpack
 ├── tsconfig.json           # تنظیمات TypeScript
@@ -125,11 +133,41 @@ Resume-Weblog-Template/
 - پیکربندی انیمیشن‌های سفارشی
 - کنترل زمان‌بندی و easing
 
+#### `DatabaseService` (database.service.ts)
+سرویس دیتابیس برای:
+- عملیات CRUD روی پست‌ها و نظرات
+- جستجو در پست‌ها
+- اشتراک Realtime روی تغییرات
+
 #### توابع کمکی (utils.ts)
 - تبدیل اعداد به فارسی
 - Throttle و Debounce
 - اسکرول smooth
 - و...
+
+---
+
+## 🗄️ راه‌اندازی Supabase
+
+برای راه‌اندازی دیتابیس Supabase، راهنمای کامل را در فایل [`SUPABASE_SETUP.md`](SUPABASE_SETUP.md) مشاهده کنید.
+
+### خلاصه مراحل:
+
+1. **ایجاد پروژه**: به [supabase.com](https://supabase.com) بروید و پروژه جدید بسازید
+2. **دریافت کلیدها**: از تنظیمات پروژه، URL و Anon Key را کپی کنید
+3. **تنظیم .env**: اطلاعات اتصال را در `.env` قرار دهید:
+   ```env
+   SUPABASE_URL=https://your-project-id.supabase.co
+   SUPABASE_ANON_KEY=your-anon-key-here
+   ```
+4. **ایجاد جداول**: از SQL Editor در داشبورد، جداول را بسازید (کوئری‌ها در راهنما موجود است)
+5. **استفاده در کد**:
+   ```typescript
+   import DatabaseService from './database.service';
+   
+   // دریافت پست‌ها
+   const { data, error } = await DatabaseService.getPosts();
+   ```
 
 ---
 
@@ -203,8 +241,17 @@ npm run build
 |---------|------|-------|
 | TypeScript | ^5.3.3 | زبان اصلی برنامه‌نویسی |
 | Webpack | ^5.89.0 | ابزار bundling و بهینه‌سازی |
+| Supabase | ^2.x | دیتابیس PostgreSQL با Realtime |
 | CSS3 | - | استایل‌دهی پیشرفته |
 | HTML5 | - | ساختار semantic |
+
+### Dependencies
+
+```json
+{
+  "@supabase/supabase-js": "^2.x"
+}
+```
 
 ### Dev Dependencies
 
@@ -218,7 +265,8 @@ npm run build
   "html-webpack-plugin": "^5.5.4",
   "css-loader": "^6.8.1",
   "style-loader": "^3.3.3",
-  "copy-webpack-plugin": "^11.0.0"
+  "copy-webpack-plugin": "^11.0.0",
+  "dotenv-webpack": "^8.x"
 }
 ```
 

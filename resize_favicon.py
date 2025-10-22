@@ -43,21 +43,17 @@ for filename, target_size in files_to_resize:
             img_cropped = img.crop(bbox)
             print(f"   Cropped to content: {img_cropped.size}")
             
-            # Scale up the cropped content by 1.1x to make it slightly bigger
-            scale_multiplier = 1.1
+            # Scale to 0.5x to make it smaller
+            scale_multiplier = 0.5
             scaled_size = int(target_size * scale_multiplier)
             img_scaled = img_cropped.resize((scaled_size, scaled_size), Image.Resampling.LANCZOS)
             
             # Create final image with target size
-            new_img = Image.new('RGBA', (target_size, target_size), (0, 0, 0, 0))
+            final_img = Image.new('RGBA', (target_size, target_size), (0, 0, 0, 0))
             
-            # Center crop the scaled image to fit target size
-            left = (scaled_size - target_size) // 2
-            top = (scaled_size - target_size) // 2
-            right = left + target_size
-            bottom = top + target_size
-            
-            final_img = img_scaled.crop((left, top, right, bottom))
+            # Center the scaled image
+            offset = ((target_size - scaled_size) // 2, (target_size - scaled_size) // 2)
+            final_img.paste(img_scaled, offset, img_scaled)
             
         else:
             # If no bbox found, just resize
