@@ -314,7 +314,8 @@ class App {
                     contact: contact,
                     subject: subject,
                     message: message,
-                    to_name: 'دکتر یوسف ندایی'
+                    to_name: 'دکتر یوسف ندایی',
+                    reply_to: contact
                 }
             );
 
