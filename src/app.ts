@@ -254,12 +254,6 @@ class App {
         );
 
         socialButtons.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const socialType = button.dataset.social;
-                this.handleSocialClick(socialType || 'unknown');
-            });
-
             // افکت موج (Ripple)
             button.addEventListener('mousedown', (e) => {
                 this.createRippleEffect(e, button);
@@ -302,30 +296,7 @@ class App {
         // });
     }
 
-    /**
-     * مدیریت کلیک روی دکمه‌های اجتماعی
-     */
-    private handleSocialClick(platform: string): void {
-        console.log(`📱 کلیک روی ${platform}`);
 
-        // اینجا می‌توانید لینک‌های واقعی را اضافه کنید
-        const links: Record<string, string> = {
-            telegram: 'https://t.me/your_username',
-            instagram: 'https://instagram.com/your_username',
-            whatsapp: 'https://wa.me/your_number',
-        };
-
-        const url = links[platform];
-        if (url) {
-            // نمایش پیام
-            this.showNotification(`در حال انتقال به ${platform}...`);
-
-            // باز کردن لینک بعد از 500ms
-            setTimeout(() => {
-                window.open(url, '_blank');
-            }, 500);
-        }
-    }
 
     /**
      * ایجاد افکت موج
