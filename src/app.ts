@@ -310,6 +310,7 @@ class App {
                 'service_75zp6dl', // Service ID
                 'template_r0aqhgd', // Template ID
                 {
+                    to_email: 'yousefnedaei2003@gmail.com',
                     from_name: name,
                     contact: contact,
                     subject: subject,
