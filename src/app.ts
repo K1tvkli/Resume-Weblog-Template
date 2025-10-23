@@ -208,6 +208,37 @@ class App {
      * راه‌اندازی رویدادهای کلیک
      */
     private setupEventListeners(): void {
+        // Designer Modal
+        const designerName = document.getElementById('designerName');
+        const designerModal = document.getElementById('designerModal');
+        const closeModal = document.getElementById('closeModal');
+
+        if (designerName && designerModal) {
+            designerName.addEventListener('click', () => {
+                designerModal.classList.add('active');
+            });
+        }
+
+        if (closeModal && designerModal) {
+            closeModal.addEventListener('click', () => {
+                designerModal.classList.remove('active');
+            });
+
+            // بستن با کلیک روی overlay
+            designerModal.addEventListener('click', (e) => {
+                if (e.target === designerModal) {
+                    designerModal.classList.remove('active');
+                }
+            });
+
+            // بستن با کلید Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && designerModal.classList.contains('active')) {
+                    designerModal.classList.remove('active');
+                }
+            });
+        }
+
         // فرم تماس
         const contactForm = document.getElementById('contactForm') as HTMLFormElement;
         if (contactForm) {
