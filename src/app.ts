@@ -322,20 +322,29 @@ class App {
 
             console.log('✅ Email sent to Dr. Nedaei successfully');
 
-            // 2. ارسال ایمیل تایید به کاربر (تمپلیت Auto-Reply)
-            await (window as any).emailjs.send(
-                'service_75zp6dl', // Service ID
-                'template_tnqjy2m', // Template ID - Auto Reply
-                {
-                    to_email: contact,
-                    from_name: 'دکتر یوسف ندایی',
-                    name: name,
-                    message: message,
-                    reply_to: 'yousefnedaei2003@gmail.com'
+            // 2. ارسال ایمیل تایید به کاربر (فقط اگر ایمیل معتبر وارد کرده باشد)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(contact)) {
+                try {
+                    await (window as any).emailjs.send(
+                        'service_75zp6dl', // Service ID
+                        'template_tnqjy2m', // Template ID - Auto Reply
+                        {
+                            to_email: contact,
+                            from_name: 'دکتر یوسف ندایی',
+                            name: name,
+                            message: message,
+                            reply_to: 'yousefnedaei2003@gmail.com'
+                        }
+                    );
+                    console.log('✅ Auto-reply sent to user successfully');
+                } catch (autoReplyError) {
+                    console.warn('⚠️ Auto-reply failed (user may not have provided valid email):', autoReplyError);
+                    // خطای Auto-Reply رو نادیده می‌گیریم چون پیام اصلی ارسال شده
                 }
-            );
-
-            console.log('✅ Auto-reply sent to user successfully');
+            } else {
+                console.log('ℹ️ No valid email provided for auto-reply (contact: ' + contact + ')');
+            }
 
             // نمایش پیام موفقیت
             this.showNotification('✅ پیام شما با موفقیت ارسال شد! به زودی پاسخ خواهید گرفت.');
