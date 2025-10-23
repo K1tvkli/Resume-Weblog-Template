@@ -1365,6 +1365,11 @@ body {
     opacity: 0;
     transform: translateX(400px);
     transition: all var(--transition-slow) var(--ease-out-cubic);
+    font-weight: 600;
+}
+
+.notification.notification-error {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
 }
 
 .notification.show {

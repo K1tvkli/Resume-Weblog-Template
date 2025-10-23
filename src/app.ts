@@ -276,11 +276,32 @@ class App {
     private handleFormSubmit(form: HTMLFormElement): void {
         const formData = new FormData(form);
         const name = formData.get('name') as string;
-        const email = formData.get('email') as string;
+        const contact = formData.get('contact') as string;
         const subject = formData.get('subject') as string;
         const message = formData.get('message') as string;
 
-        console.log('📧 Form submitted:', { name, email, subject, message });
+        // بررسی اینکه همه فیلدها پر شده باشند
+        if (!name || !name.trim()) {
+            this.showNotification('⚠️ لطفاً نام و نام خانوادگی خود را وارد کنید', 'error');
+            return;
+        }
+
+        if (!contact || !contact.trim()) {
+            this.showNotification('⚠️ لطفاً ایمیل، شماره تماس یا آیدی تلگرام خود را وارد کنید', 'error');
+            return;
+        }
+
+        if (!subject || !subject.trim()) {
+            this.showNotification('⚠️ لطفاً موضوع پیام را وارد کنید', 'error');
+            return;
+        }
+
+        if (!message || !message.trim()) {
+            this.showNotification('⚠️ لطفاً متن پیام خود را بنویسید', 'error');
+            return;
+        }
+
+        console.log('📧 Form submitted:', { name, contact, subject, message });
 
         // نمایش پیام موفقیت
         this.showNotification('✅ پیام شما با موفقیت ارسال شد!');
@@ -398,9 +419,9 @@ class App {
     /**
      * نمایش نوتیفیکیشن
      */
-    private showNotification(message: string): void {
+    private showNotification(message: string, type: 'success' | 'error' = 'success'): void {
         const notification = document.createElement('div');
-        notification.className = 'notification';
+        notification.className = `notification ${type === 'error' ? 'notification-error' : ''}`;
         notification.textContent = message;
         document.body.appendChild(notification);
 
@@ -411,7 +432,7 @@ class App {
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => notification.remove(), 300);
-        }, 2000);
+        }, 3000);
     }
 }
 
