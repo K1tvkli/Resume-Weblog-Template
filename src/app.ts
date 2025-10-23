@@ -305,10 +305,10 @@ class App {
         this.showNotification('⏳ در حال ارسال پیام...', 'info');
 
         try {
-            // ارسال ایمیل با EmailJS
-            const response = await (window as any).emailjs.send(
+            // 1. ارسال ایمیل به دکتر ندایی (تمپلیت اصلی)
+            await (window as any).emailjs.send(
                 'service_75zp6dl', // Service ID
-                'template_r0aqhgd', // Template ID
+                'template_r0aqhgd', // Template ID - پیام اصلی
                 {
                     to_email: 'yousefnedaei2003@gmail.com',
                     from_name: name,
@@ -320,7 +320,22 @@ class App {
                 }
             );
 
-            console.log('✅ Email sent successfully:', response);
+            console.log('✅ Email sent to Dr. Nedaei successfully');
+
+            // 2. ارسال ایمیل تایید به کاربر (تمپلیت Auto-Reply)
+            await (window as any).emailjs.send(
+                'service_75zp6dl', // Service ID
+                'template_tnqjy2m', // Template ID - Auto Reply
+                {
+                    to_email: contact,
+                    from_name: 'دکتر یوسف ندایی',
+                    name: name,
+                    message: message,
+                    reply_to: 'yousefnedaei2003@gmail.com'
+                }
+            );
+
+            console.log('✅ Auto-reply sent to user successfully');
 
             // نمایش پیام موفقیت
             this.showNotification('✅ پیام شما با موفقیت ارسال شد! به زودی پاسخ خواهید گرفت.');
