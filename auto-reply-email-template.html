@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پاسخ خودکار - دکتر یوسف ندایی</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px 30px;
+            color: #333;
+        }
+
+        .greeting {
+            font-size: 22px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .greeting::before {
+            content: "👋";
+            font-size: 26px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-right: 4px solid #667eea;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .highlight-box strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .social-links {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px 0;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .social-links p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .telegram {
+            background: linear-gradient(135deg, #0088cc, #00a3e0);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+        }
+
+        .instagram {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .footer {
+            background: #f9f9f9;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #888;
+            margin: 5px 0;
+        }
+
+        .footer .signature {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 30px 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .greeting {
+                font-size: 20px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">✉️</div>
+            <h1>پیام شما دریافت شد!</h1>
+            <p>به زودی با شما تماس خواهیم گرفت</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">
+                سلام دوست عزیز!
+            </div>
+
+            <p class="message">
+                خیلی ممنون که وقت گذاشتی و برام پیام فرستادی! 😊 پیامت رو دریافت کردم و خیلی خوشحالم که می‌خوای باهام در تماس باشی.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>نگران نباش!</strong> من خودم تمام پیام‌ها رو می‌خونم و در اسرع وقت بهت جواب میدم. معمولاً ظرف ۲۴ ساعت بهت پاسخ میدم، ولی اگه کمی طول بکشه، لطفاً صبور باش ❤️
+                </p>
+            </div>
+
+            <p class="message">
+                در این مدت می‌تونی:
+            </p>
+
+            <ul class="info-list">
+                <li>از طریق شبکه‌های اجتماعی با من در تماس باشی</li>
+                <li>محتوای آموزشی رو در کانال‌هام دنبال کنی</li>
+                <li>از سوالات و مطالب قبلی دیگران استفاده کنی</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p class="message" style="text-align: center; font-weight: 600; color: #667eea;">
+                اگه موضوع فوری‌ای داری، می‌تونی مستقیماً از طریق شبکه‌های اجتماعی باهام در تماس باشی 👇
+            </p>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <p>راه‌های ارتباطی:</p>
+                <div class="social-icons">
+                    <a href="https://telegram.me/yousefnedaei_JZ" class="social-icon telegram" title="تلگرام">
+                        📱
+                    </a>
+                    <a href="https://instagram.com/yousefnedaei2003" class="social-icon instagram" title="اینستاگرام">
+                        📷
+                    </a>
+                    <a href="https://wa.me/qr/4PIKYR4TQQE5I1" class="social-icon whatsapp" title="واتساپ">
+                        💬
+                    </a>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="message" style="text-align: center;">
+                منتظر گپ زدن باهات هستم! 🌟
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="signature">دکتر یوسف ندایی</p>
+            <p>مدرس و مولف زیست شناسی کنکور</p>
+            <p>رتبه ۱۱۵ کنکور سراسری</p>
+            <p style="margin-top: 15px; font-size: 12px; color: #aaa;">
+                این یک پیام خودکار است. لطفاً به این ایمیل پاسخ ندهید.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
