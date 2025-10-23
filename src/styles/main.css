@@ -1168,12 +1168,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     transition: transform var(--transition-normal) var(--ease-bounce);
 }
 
 .btn-icon svg {
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 .social-btn:hover .btn-icon {
@@ -1182,6 +1184,9 @@ body {
 
 .btn-text {
     font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
 }
 
 /* افکت Ripple */
@@ -1602,7 +1607,7 @@ button:focus {
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 10000;
@@ -1612,6 +1617,7 @@ button:focus {
 }
 
 .modal-overlay.active {
+    display: flex;
     opacity: 1;
     visibility: visible;
 }
