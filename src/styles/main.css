@@ -1372,6 +1372,10 @@ body {
     background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
 }
 
+.notification.notification-info {
+    background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+}
+
 .notification.show {
     opacity: 1;
     transform: translateX(0);

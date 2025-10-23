@@ -273,7 +273,7 @@ class App {
     /**
      * مدیریت ارسال فرم تماس
      */
-    private handleFormSubmit(form: HTMLFormElement): void {
+    private async handleFormSubmit(form: HTMLFormElement): Promise<void> {
         const formData = new FormData(form);
         const name = formData.get('name') as string;
         const contact = formData.get('contact') as string;
@@ -301,20 +301,35 @@ class App {
             return;
         }
 
-        console.log('📧 Form submitted:', { name, contact, subject, message });
+        // نمایش پیام در حال ارسال
+        this.showNotification('⏳ در حال ارسال پیام...', 'info');
 
-        // نمایش پیام موفقیت
-        this.showNotification('✅ پیام شما با موفقیت ارسال شد!');
+        try {
+            // ارسال ایمیل با EmailJS
+            const response = await (window as any).emailjs.send(
+                'service_75zp6dl', // Service ID
+                'template_r0aqhgd', // Template ID
+                {
+                    from_name: name,
+                    contact: contact,
+                    subject: subject,
+                    message: message,
+                    to_name: 'دکتر یوسف ندایی'
+                }
+            );
 
-        // ریست کردن فرم
-        form.reset();
+            console.log('✅ Email sent successfully:', response);
 
-        // اینجا می‌توانید درخواست API برای ارسال ایمیل اضافه کنید
-        // fetch('/api/contact', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ name, email, subject, message }),
-        //     headers: { 'Content-Type': 'application/json' }
-        // });
+            // نمایش پیام موفقیت
+            this.showNotification('✅ پیام شما با موفقیت ارسال شد! به زودی پاسخ خواهید گرفت.');
+
+            // ریست کردن فرم
+            form.reset();
+
+        } catch (error) {
+            console.error('❌ Email sending failed:', error);
+            this.showNotification('❌ متأسفانه خطایی رخ داد. لطفاً دوباره تلاش کنید یا از راه‌های ارتباطی دیگر استفاده کنید.', 'error');
+        }
     }
 
 
@@ -419,9 +434,12 @@ class App {
     /**
      * نمایش نوتیفیکیشن
      */
-    private showNotification(message: string, type: 'success' | 'error' = 'success'): void {
+    private showNotification(message: string, type: 'success' | 'error' | 'info' = 'success'): void {
         const notification = document.createElement('div');
-        notification.className = `notification ${type === 'error' ? 'notification-error' : ''}`;
+        let className = 'notification';
+        if (type === 'error') className += ' notification-error';
+        if (type === 'info') className += ' notification-info';
+        notification.className = className;
         notification.textContent = message;
         document.body.appendChild(notification);
 
